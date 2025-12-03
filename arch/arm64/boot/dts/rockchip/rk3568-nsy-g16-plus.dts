@@ -217,7 +217,8 @@
 		vin-supply = <&vcc3v3_sys>;
 	};
 
-	vcc3v3_bu: c3v3_buvcc3v3-bu {
+	/* Fix the node name typo */
+	vcc3v3_bu: vcc3v3-bu {
 		compatible = "regulator-fixed";
 		regulator-name = "vcc3v3_bu";
 		regulator-always-on;
@@ -292,7 +293,8 @@
 		};
 	};
 
-	rtlgsw@0 {
+	/* Fix the node name typo */
+    rtlgsw {
 		compatible = "realtek,rtl8367s";
 		realtek,mdio = <&mdio0>;
 		mii-bus = <&mdio0>;
@@ -981,8 +983,11 @@
 	status = "okay";
 };
 
+/* Add #address-cells, #size-cells */
 &sfc {
 	status = "okay";
+	#address-cells = <1>;  /* One cell for the chip select */
+	#size-cells = <0>;     /* No cell for the size */
 
 	flash@0 {
 		compatible = "spi-nor";
